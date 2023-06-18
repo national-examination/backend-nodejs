@@ -4,10 +4,7 @@ const { isLoggedIn } = require("./middleware") // import isLoggedIn custom middl
 
 const router = Router();
 
-//custom middleware could also be set at the router level like so
-// router.use(isLoggedIn) then all routes in this router would be protected
 
-// Index Route with isLoggedIn middleware
 router.get("/", isLoggedIn, async (req, res) => {
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
   //send all todos with that user
@@ -18,7 +15,6 @@ router.get("/", isLoggedIn, async (req, res) => {
   );
 });
 
-// Show Route with isLoggedIn middleware
 router.get("/:id", isLoggedIn, async (req, res) => {
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
   const _id = req.params.id; // get id from params
